@@ -1,3 +1,8 @@
+Since I can't directly send downloadable file attachments, I've put the exact raw Markdown code in the block below.
+
+Just click the **Copy code** button in the top right corner of the box, paste it into any text editor (like VS Code, Notepad, or TextEdit), and save the file as `README.md`.
+
+```markdown
 # Monday.com Status Injector
 
 A Tampermonkey userscript that allows you to instantly inject beautifully formatted project statuses (Working on it, Stakeholder Review, Stuck, Complete) into Monday.com documents.
@@ -37,14 +42,14 @@ Before installing the script, ensure your browser is set up correctly:
 
 ### The Code
 
-\`\`\`javascript
+```javascript
 // ==UserScript==
 // @name         Monday Status Injector
-// @namespace    http://tampermonkey.net/
+// @namespace    [http://tampermonkey.net/](http://tampermonkey.net/)
 // @version      4.3
 // @description  Instantly injects formatted project statuses (Working on it, Stuck, etc.) into Monday.com using Alt+W without overwriting existing text.
 // @author       Sayful
-// @match        *://*.monday.com/*
+// @match        *://*[.monday.com/](https://.monday.com/)*
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
@@ -119,20 +124,20 @@ Before installing the script, ensure your browser is set up correctly:
             { id: '4', label: 'Complete', color: '#00ca72' }
         ];
 
-        let menuHTML = \`<div style="font-size:18px; font-weight:bold; margin-bottom:15px; color:#ffcb00;">Select Status</div>\`;
+        let menuHTML = `<div style="font-size:18px; font-weight:bold; margin-bottom:15px; color:#ffcb00;">Select Status</div>`;
         options.forEach(opt => {
-            menuHTML += \`<div class="status-opt" data-key="\${opt.id}" style="padding:10px 15px; margin:5px 0; border-radius:6px; cursor:pointer; text-align:left; transition: background 0.2s; display:flex; align-items:center;">
-                <b style="color:\${opt.color}; margin-right:12px; font-size:18px;">\${opt.id}.</b>
-                <span style="font-size:16px;">\${opt.label}</span>
-            </div>\`;
+            menuHTML += `<div class="status-opt" data-key="${opt.id}" style="padding:10px 15px; margin:5px 0; border-radius:6px; cursor:pointer; text-align:left; transition: background 0.2s; display:flex; align-items:center;">
+                <b style="color:${opt.color}; margin-right:12px; font-size:18px;">${opt.id}.</b>
+                <span style="font-size:16px;">${opt.label}</span>
+            </div>`;
         });
-        menuHTML += \`<div style="font-size:11px; margin-top:10px; color:#888;">[ESC to cancel]</div>\`;
+        menuHTML += `<div style="font-size:11px; margin-top:10px; color:#888;">[ESC to cancel]</div>`;
         menu.innerHTML = menuHTML;
         document.body.appendChild(menu);
 
         const style = document.createElement('style');
         style.id = 'status-menu-styles';
-        style.innerHTML = \`.status-opt:hover { background: #333 !important; }\`;
+        style.innerHTML = `.status-opt:hover { background: #333 !important; }`;
         document.head.appendChild(style);
 
         menu.addEventListener('mousedown', (e) => {
@@ -192,18 +197,18 @@ Before installing the script, ensure your browser is set up correctly:
         inputMenu.id = 'status-input-menu';
         inputMenu.style = "position:fixed; top:30%; left:50%; transform:translate(-50%, -30%); z-index:2147483647; background:#1c1d1f; color:#ffffff; padding:20px; border-radius:12px; border:1px solid #444; font-family:sans-serif; box-shadow:0 20px 60px rgba(0,0,0,0.8); text-align:center; min-width:320px;";
         
-        inputMenu.innerHTML = \`
-            <div style="font-size:16px; font-weight:bold; margin-bottom:15px; color:\${color.replace('var(--color-egg_yolk)', '#ffcb00').replace('var(--color-stuck-red)', '#df2f4a')};">
-                Message for \${label}
+        inputMenu.innerHTML = `
+            <div style="font-size:16px; font-weight:bold; margin-bottom:15px; color:${color.replace('var(--color-egg_yolk)', '#ffcb00').replace('var(--color-stuck-red)', '#df2f4a')};">
+                Message for ${label}
             </div>
-            <input type="text" id="status-custom-input" data-label="\${label}" data-color="\${color}" value="\${defaultText}" style="width:100%; box-sizing:border-box; padding:10px; border-radius:6px; border:1px solid #555; background:#2a2b2d; color:#fff; font-size:16px; margin-bottom:15px; outline:none;" />
+            <input type="text" id="status-custom-input" data-label="${label}" data-color="${color}" value="${defaultText}" style="width:100%; box-sizing:border-box; padding:10px; border-radius:6px; border:1px solid #555; background:#2a2b2d; color:#fff; font-size:16px; margin-bottom:15px; outline:none;" />
             
             <button id="status-submit-btn" style="background:#00ca72; color:#1c1d1f; border:none; padding:10px 20px; border-radius:6px; font-size:16px; font-weight:bold; cursor:pointer; width:100%; margin-bottom:10px; transition: background 0.2s;">
                 Add
             </button>
             
             <div style="font-size:11px; color:#888;">[Enter] or Click Add &nbsp;&nbsp; [ESC] to cancel</div>
-        \`;
+        `;
         document.body.appendChild(inputMenu);
 
         inputMenu.addEventListener('mousedown', (e) => {
@@ -269,7 +274,8 @@ Before installing the script, ensure your browser is set up correctly:
         targetNode.dispatchEvent(event);
     }
 })();
-\`\`\`
+
+```
 
 ---
 
@@ -279,6 +285,14 @@ Before installing the script, ensure your browser is set up correctly:
 2. Click where you want to type your status.
 3. Press **`Alt + W`** to open the Status UI.
 4. **Select a status:**
-   * Tap **`1`** (Working on it) or **`3`** (Stuck) to open the custom message prompt. Type your update and press **Enter** or click **Add**.
-   * Tap **`2`** (Stakeholder Review) or **`4`** (Complete) to instantly inject the automated status.
+* Tap **`1`** (Working on it) or **`3`** (Stuck) to open the custom message prompt. Type your update and press **Enter** or click **Add**.
+* Tap **`2`** (Stakeholder Review) or **`4`** (Complete) to instantly inject the automated status.
+
+
 5. You can also use your mouse to click the options in the menu.
+
+```
+
+Would you like me to help you draft a `LICENSE` file for your GitHub repository as well?
+
+```
