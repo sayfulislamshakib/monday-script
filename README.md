@@ -1,8 +1,3 @@
-Since I can't directly send downloadable file attachments, I've put the exact raw Markdown code in the block below.
-
-Just click the **Copy code** button in the top right corner of the box, paste it into any text editor (like VS Code, Notepad, or TextEdit), and save the file as `README.md`.
-
-```markdown
 # Monday.com Status Injector
 
 A Tampermonkey userscript that allows you to instantly inject beautifully formatted project statuses (Working on it, Stakeholder Review, Stuck, Complete) into Monday.com documents.
@@ -19,26 +14,28 @@ A Tampermonkey userscript that allows you to instantly inject beautifully format
 
 ---
 
-## ⚙️ Prerequisites & Settings
+## ⚙️ Required Extension Settings
 
-Before installing the script, ensure your browser is set up correctly:
+Modern browsers require a few specific settings for Tampermonkey scripts to run smoothly. Before installing, please configure your extension:
 
 1. **Install Tampermonkey:** Get the Tampermonkey extension for your browser (Chrome, Edge, Firefox, etc.).
 2. **Enable Developer Mode (Chrome/Edge):**
-   * Go to your browser's extension page (e.g., `chrome://extensions/`).
-   * Toggle **Developer Mode** ON (usually in the top right corner).
-   * Find Tampermonkey in the list, click **Details**, and ensure **"Allow access to file URLs"** is toggled ON.
+   * Open a new tab and go to your browser's extension page (e.g., type `chrome://extensions/` in the URL bar).
+   * Toggle **Developer Mode** to **ON** (usually located in the top right corner).
+3. **Allow File Permissions:**
+   * On that same extensions page, find the Tampermonkey extension card and click **Details**.
+   * Scroll down and toggle **"Allow access to file URLs"** to **ON**.
 
 ---
 
 ## 🚀 Installation
 
-1. Click the Tampermonkey extension icon in your browser and select **Dashboard**.
-2. Click the **+** icon (Create a new script) tab.
-3. Delete any placeholder code in the editor.
+1. Click the Tampermonkey extension icon in your browser toolbar and select **Dashboard**.
+2. Click the **+** icon (Create a new script) tab at the top.
+3. Delete any placeholder code currently in the editor.
 4. Copy and paste the entire script below into the editor.
 5. Go to **File > Save** (or press `Ctrl + S` / `Cmd + S`).
-6. Refresh your Monday.com tab.
+6. Refresh your Monday.com tab for the script to take effect.
 
 ### The Code
 
@@ -274,25 +271,3 @@ Before installing the script, ensure your browser is set up correctly:
         targetNode.dispatchEvent(event);
     }
 })();
-
-```
-
----
-
-## 💻 How to Use
-
-1. Open any Monday.com board or document.
-2. Click where you want to type your status.
-3. Press **`Alt + W`** to open the Status UI.
-4. **Select a status:**
-* Tap **`1`** (Working on it) or **`3`** (Stuck) to open the custom message prompt. Type your update and press **Enter** or click **Add**.
-* Tap **`2`** (Stakeholder Review) or **`4`** (Complete) to instantly inject the automated status.
-
-
-5. You can also use your mouse to click the options in the menu.
-
-```
-
-Would you like me to help you draft a `LICENSE` file for your GitHub repository as well?
-
-```
